@@ -1,21 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Dog from './Components/Dog';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+
+    state = {
+        pressedPlay: false
+    };
+
+    _handlePlayClick = () => {
+        this.setState({ pressedPlay: true });
+    }
+
+    render() {
+
+        const pressedPlay = this.state.pressedPlay;
+
+        return (
+        <div>
+        {
+        !pressedPlay ? 
+        <div className="App">
+            <button type="button"  className="playButton" onClick={ this._handlePlayClick }>
+                <i className="fa fa-play-circle fa-5x" aria-hidden="true"></i>
+            </button>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+        :
+        <Dog />
+        }
+        </div>
+        );
+    }
 }
 
 export default App;
