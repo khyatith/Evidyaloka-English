@@ -5,7 +5,6 @@ import WinningSound from '../data/Sounds/WinningSound.mp3';
 class Notification extends Component {
 
     render() {
-        console.log(this.props);
         return (
         <div>
         {

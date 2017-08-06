@@ -7,6 +7,22 @@ const Game1Actions = {
             actionType: Game1Constants.SET_USER_ANSWER,
             userAnswer: answer
         });
+    },
+    setMouseClickCoordinates(coord) {
+        AppDispatcher.dispatch({
+            actionType: Game1Constants.SET_MOUSE_COORDINATES,
+            mouseClickCoordinates: coord
+        });
+    },
+    setCurrentLevel() {
+        AppDispatcher.dispatch({
+            actionType: Game1Constants.SET_CURRENT_LEVEL
+        });
+    },
+    setPreviousLevel() {
+        AppDispatcher.dispatch({
+            actionType: Game1Constants.SET_PREVIOUS_LEVEL
+        });
     }
 };
 

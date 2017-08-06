@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import dogPic from '../images/jakeDog.jpg';
-import Answer from './Answer';
+import jakeSitting from '../images/jakeSitting.png';
 import Question from './Question';
 import Game1Store from '../store/Game1Store';
 import Notification from './Notification';
@@ -26,11 +26,33 @@ class Dog extends Component {
     }
 
     render() {
+        const { mouseClickCoordinates, userAnswer, currentLevel } = this.state,
+            imgX = mouseClickCoordinates.x,
+            imgY = mouseClickCoordinates.y - 100,
+            imageStyle = {
+                top: imgY,
+                left: imgX,
+                width: '150px',
+                height: '150px',
+                zIndex: 1000,
+                position:'absolute'
+            };
         return (
         <div>
-            <img className="dogPic" src={ dogPic } alt="Dog" />
-            <Answer />
-            <Question />
+            {
+            userAnswer && mouseClickCoordinates ? 
+            <img className="jakeSitting" src={ jakeSitting } alt="Sitting Dog" style={ imageStyle } />
+            :
+            <img className="dogPic" src={ dogPic } alt="Dog"/>
+            }
+            {
+                currentLevel >= 0 && 
+                <Question 
+                    userAnswer={ userAnswer }
+                    mouseClickCoordinates={ mouseClickCoordinates }
+                    currentLevel={ currentLevel }
+                />
+            }
             {
                 this.state.message && <Notification message={ this.state.message } />
             }
